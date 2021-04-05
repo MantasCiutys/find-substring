@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { DefaultSubstringFinderService } from '../default-substring-finder.service';
 
 @Component({
   selector: 'app-input-texts',
@@ -7,9 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InputTextsComponent implements OnInit {
 
-  constructor() { }
+  @Input()
+  private inputString: string;
+  
+  @Input()
+  private inputSubstring: string;
+
+  
+
+  private isDefaultFound: boolean;
+
+  constructor(private defaultSubstringFinderService: DefaultSubstringFinderService) { }
 
   ngOnInit() {
   }
 
+  isDefaultSubstringFound(): boolean {
+    this.isDefaultFound = this.defaultSubstringFinderService.isSubstringFound(this.inputString, this.inputSubstring);
+    return this.isDefaultFound;
+  }
 }
