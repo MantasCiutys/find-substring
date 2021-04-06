@@ -1,5 +1,5 @@
 <div>
-	<textarea id="inputText" name="inputText" cols="60" rows="15"></textarea>
-	<textarea id="substringText" name="substringText" cols="30" rows="15"></textarea>
+	<textarea [(ngModel)]="inputString" id="inputText" class="form-control" name="inputText" cols="60" rows="15"></textarea>
+	<textarea [(ngModel)]="inputSubstring" id="substringText" name="substringText" cols="30" rows="15"></textarea>
 </div>
-<button type="button">Find Substring!</button>
+<button type="button" (click)="isDefaultSubstringFound()">Find Substring!</button>

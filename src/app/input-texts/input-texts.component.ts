@@ -8,13 +8,8 @@ import { DefaultSubstringFinderService } from '../default-substring-finder.servi
 })
 export class InputTextsComponent implements OnInit {
 
-  @Input()
-  private inputString: string;
-  
-  @Input()
-  private inputSubstring: string;
-
-  
+  inputString: string;
+  inputSubstring: string;
 
   private isDefaultFound: boolean;
 
