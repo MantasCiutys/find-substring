@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DefaultSubstringFinderService } from '../default-substring-finder.service';
 
 @Component({
   selector: 'app-results',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ResultsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private defaultSubstringFinderService: DefaultSubstringFinderService) { }
 
   ngOnInit() {
+  }
+
+  getDefaultApproachTime(): number {
+    return this.defaultSubstringFinderService.getSubstringFindTime();
   }
 
 }
