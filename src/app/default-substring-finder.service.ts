@@ -8,7 +8,7 @@ export class DefaultSubstringFinderService implements IFindSubstring {
 
   private startProcessTime: number;
   private endProcessTime: number;
-  isFound: boolean;
+  private isFound: boolean;
 
   constructor() { }
 
@@ -39,7 +39,6 @@ export class DefaultSubstringFinderService implements IFindSubstring {
   }
 
   getIsFound(): boolean {
-    console.log('Default service ' + this.isFound);
     return this.isFound;
   }
 

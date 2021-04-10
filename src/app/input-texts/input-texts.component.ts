@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { DefaultSubstringFinderService } from '../default-substring-finder.service';
+import { RabinKarpAlgorithmService } from '../rabin-karp-algorithm.service';
 
 @Component({
   selector: 'app-input-texts',
@@ -12,14 +13,20 @@ export class InputTextsComponent implements OnInit {
   inputSubstring: string;
 
   private isDefaultFound: boolean;
+  private isRabinKarpFound: boolean;
 
-  constructor(private defaultSubstringFinderService: DefaultSubstringFinderService) { }
+  constructor(private defaultSubstringFinderService: DefaultSubstringFinderService,
+              private rabinKarpAlgorithmService: RabinKarpAlgorithmService) { }
 
   ngOnInit() {
   }
 
-  isDefaultSubstringFound(): boolean {
+  executeAllSubstringMethods(): void {
+    // execute default
+    this.defaultSubstringFinderService.preProcessInputs(this.inputString, this.inputSubstring);
     this.isDefaultFound = this.defaultSubstringFinderService.isSubstringFound(this.inputString, this.inputSubstring);
-    return this.isDefaultFound;
+
+    // execute Rabin Karp
+    this.rabinKarpAlgorithmService.preProcessInputs(this.inputString, this.inputSubstring);
   }
 }
