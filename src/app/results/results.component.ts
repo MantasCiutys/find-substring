@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DefaultSubstringFinderService } from '../default-substring-finder.service';
 import { RabinKarpAlgorithmService } from '../rabin-karp-algorithm.service';
+import { NaiveSubstringService } from '../naive-substring.service';
 
 @Component({
   selector: 'app-results',
@@ -10,7 +11,8 @@ import { RabinKarpAlgorithmService } from '../rabin-karp-algorithm.service';
 export class ResultsComponent implements OnInit {
 
   constructor(private defaultSubstringFinderService: DefaultSubstringFinderService,
-              private rabinKarpSubstringService: RabinKarpAlgorithmService) { }
+              private rabinKarpSubstringService: RabinKarpAlgorithmService,
+              private naiveService: NaiveSubstringService) { }
 
   ngOnInit() {
   }
@@ -46,5 +48,22 @@ export class ResultsComponent implements OnInit {
 
   getRabinKarpIsFound(): string {
     return this.rabinKarpSubstringService.getIsFound() ? 'YES' : 'NO';
+  }
+
+  // Naive methods
+  getNaiveProcessingTime(): number {
+    return this.naiveService.getSubstringFindTime();
+  }
+
+  getNaivePreprocessingTime(): number {
+    return this.naiveService.getPreProcessSubstringTime();
+  }
+
+  getNaiveTotalTime(): number {
+    return this.naiveService.getTotalTime();
+  }
+
+  getNaiveIsFound(): string {
+    return this.naiveService.getIsFound() ? 'YES' : 'NO';
   }
 }
