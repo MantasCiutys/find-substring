@@ -13,8 +13,20 @@ export class ResultsComponent implements OnInit {
   ngOnInit() {
   }
 
-  getDefaultApproachTime(): number {
+  getDefaultProcessingTime(): number {
     return this.defaultSubstringFinderService.getSubstringFindTime();
+  }
+
+  getDefaultPreProcessingTime(): number {
+    return this.defaultSubstringFinderService.getPreProcessSubstringTime();
+  }
+
+  getDefaultTotalTime(): number {
+    return this.defaultSubstringFinderService.getTotalTime();
+  }
+
+  getDefaultIsFound(): string {
+    return this.defaultSubstringFinderService.getIsFound() ? 'YES' : 'NO';
   }
 
 }

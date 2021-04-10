@@ -1,4 +1,18 @@
 <div id="resultsBlock">
-  <p>Default approach time: {{getDefaultApproachTime()}} (miliseconds) </p>
-  <p>Robert.. algorithm approach time: </p>
+  <table class="table">
+    <tr>
+      <th>Algorithm Name</th>
+      <th>Pre-processing time</th>
+      <th>Processing time</th>
+      <th>Total time</th>
+      <th>Was substring found?</th>
+    </tr>
+    <tr>
+      <td>Default Javascript</td>
+      <td>{{getDefaultPreProcessingTime()}}</td>
+      <td>{{getDefaultProcessingTime()}}</td>
+      <td>{{getDefaultTotalTime()}}</td>
+      <td>{{getDefaultIsFound()}}</td>
+    </tr>
+  </table>
 </div>

@@ -6,29 +6,41 @@ import { IFindSubstring } from './ifind-substring';
 })
 export class DefaultSubstringFinderService implements IFindSubstring {
 
-  private startTime: number;
-  private endTime: number;
+  private startProcessTime: number;
+  private endProcessTime: number;
+  isFound: boolean;
 
   constructor() { }
 
-  preProcessInputs(inputString: string, inputSubstring: string): number {
     // for default, no pre-processing needed
-    return 0;
+  preProcessInputs(inputString: string, inputSubstring: string): void {
   }
 
   isSubstringFound(inputString: string, inputSubstring: string): boolean {
-    let isFound: boolean;
-    this.startTime = performance.now();
+    this.startProcessTime = performance.now();
 
-    isFound = inputString.includes(inputSubstring);
+    this.isFound = inputString.includes(inputSubstring);
 
-    this.endTime = performance.now();
+    this.endProcessTime = performance.now();
 
-    return isFound;
+    return this.isFound;
   }
 
-    getSubstringFindTime(): number {
-      return this.endTime = this.startTime;
+  getSubstringFindTime(): number {
+      return this.endProcessTime - this.startProcessTime;
+  }
+
+  getPreProcessSubstringTime(): number {
+    return 0;
+  }
+
+  getTotalTime(): number {
+    return this.getPreProcessSubstringTime() + this.getSubstringFindTime();
+  }
+
+  getIsFound(): boolean {
+    console.log('Default service ' + this.isFound);
+    return this.isFound;
   }
 
 }
