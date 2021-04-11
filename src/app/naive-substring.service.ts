@@ -22,14 +22,18 @@ export class NaiveSubstringService implements IFindSubstring {
 
     for (let i = 0; i <= stringLength - subLength; i++) {
       let isSubstringMatching = true;
+      innerLoop:
       for (let j = i, k = 0; j < i + subLength; j++, k++) {
         if (inputString[j] !== inputSubstring[k]) {
           isSubstringMatching = false;
+          break innerLoop;
         }
       }
+      // substring has been found, so return immediatelly
       if (isSubstringMatching) {
         this.isFound = true;
-        break;
+        this.endProcessingTime = performance.now();
+        return this.isFound;
       }
     }
     this.isFound = false;
