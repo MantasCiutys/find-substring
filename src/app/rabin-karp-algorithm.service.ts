@@ -1,27 +1,23 @@
 import { Injectable } from '@angular/core';
 import { IFindSubstring } from './ifind-substring';
+import { AbstractSubstring } from './abstractsubstring';
 
 @Injectable({
   providedIn: 'root'
 })
-export class RabinKarpAlgorithmService implements IFindSubstring {
+export class RabinKarpAlgorithmService extends AbstractSubstring implements IFindSubstring {
 
-  private startProcessTime: number;
-  private endProcessTime: number;
-  private startPreProcessTime: number;
-  private endPreProcessTime: number;
-  private isFound: boolean;
-
-  // variables specific for this algorithm only
   private radixD = 10;
   private primeQ = 13;
   private p = 0;
   private t = 0;
 
-  constructor() { }
+  constructor() {
+    super();
+  }
 
   preProcessInputs(inputString: string, inputSubstring: string): void {
-    this.startPreProcessTime = performance.now();
+    this.startPreProcessingTime = performance.now();
 
     const stringLength: number = inputString.length;
     const substringLength: number = inputSubstring.length;
@@ -31,23 +27,10 @@ export class RabinKarpAlgorithmService implements IFindSubstring {
       this.t = (this.radixD * this.t + Number(inputString[i])) % this.primeQ;
     }
 
-    this.endPreProcessTime = performance.now();
+    this.endPreProcessingTime = performance.now();
   }
+
   isSubstringFound(inputString: string, inputSubstring: string): boolean {
     return true;
-  }
-  getSubstringFindTime(): number {
-    return this.endProcessTime - this.startProcessTime;
-  }
-  getPreProcessSubstringTime(): number {
-    return this.endPreProcessTime - this.startPreProcessTime;
-  }
-
-  getTotalTime(): number {
-    return this.getPreProcessSubstringTime() + this.getSubstringFindTime();
-  }
-
-  getIsFound(): boolean {
-    return this.isFound;
   }
 }

@@ -13,9 +13,6 @@ export class InputTextsComponent implements OnInit {
   inputString: string;
   inputSubstring: string;
 
-  private isDefaultFound: boolean;
-  private isRabinKarpFound: boolean;
-
   constructor(private defaultSubstringFinderService: DefaultSubstringFinderService,
               private rabinKarpAlgorithmService: RabinKarpAlgorithmService,
               private naiveService: NaiveSubstringService) { }
@@ -26,7 +23,7 @@ export class InputTextsComponent implements OnInit {
   executeAllSubstringMethods(): void {
     // execute default
     this.defaultSubstringFinderService.preProcessInputs(this.inputString, this.inputSubstring);
-    this.isDefaultFound = this.defaultSubstringFinderService.isSubstringFound(this.inputString, this.inputSubstring);
+    this.defaultSubstringFinderService.isSubstringFound(this.inputString, this.inputSubstring);
 
     // execute Rabin Karp
     this.rabinKarpAlgorithmService.preProcessInputs(this.inputString, this.inputSubstring);

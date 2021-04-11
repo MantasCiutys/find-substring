@@ -1,46 +1,29 @@
 import { Injectable } from '@angular/core';
 import { IFindSubstring } from './ifind-substring';
+import { AbstractSubstring } from './abstractsubstring';
 
 @Injectable({
   providedIn: 'root'
 })
-export class DefaultSubstringFinderService implements IFindSubstring {
+export class DefaultSubstringFinderService extends AbstractSubstring implements IFindSubstring {
 
-  private startProcessTime: number;
-  private endProcessTime: number;
-  private isFound: boolean;
-
-  constructor() { }
+  constructor() {
+    super();
+  }
 
     // for default, no pre-processing needed
   preProcessInputs(inputString: string, inputSubstring: string): void {
+    return;
   }
 
   isSubstringFound(inputString: string, inputSubstring: string): boolean {
-    this.startProcessTime = performance.now();
+    this.startProcessingTime = performance.now();
 
     this.isFound = inputString.includes(inputSubstring);
 
-    this.endProcessTime = performance.now();
+    this.endProcessingTime = performance.now();
 
     return this.isFound;
   }
-
-  getSubstringFindTime(): number {
-      return this.endProcessTime - this.startProcessTime;
-  }
-
-  getPreProcessSubstringTime(): number {
-    return 0;
-  }
-
-  getTotalTime(): number {
-    return this.getPreProcessSubstringTime() + this.getSubstringFindTime();
-  }
-
-  getIsFound(): boolean {
-    return this.isFound;
-  }
-
 }
 
