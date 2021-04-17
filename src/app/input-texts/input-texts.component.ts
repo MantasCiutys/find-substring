@@ -21,6 +21,9 @@ export class InputTextsComponent implements OnInit {
   }
 
   executeAllSubstringMethods(): void {
+    // reset details
+    this.resetAll();
+
     // execute default
     this.defaultSubstringFinderService.preProcessInputs(this.inputString, this.inputSubstring);
     this.defaultSubstringFinderService.isSubstringFound(this.inputString, this.inputSubstring);
@@ -30,5 +33,11 @@ export class InputTextsComponent implements OnInit {
 
     // execute Naive approach
     this.naiveService.isSubstringFound(this.inputString, this.inputSubstring);
+  }
+
+  resetAll(): void {
+    this.defaultSubstringFinderService.reset();
+    this.rabinKarpAlgorithmService.reset();
+    this.naiveService.reset();
   }
 }

@@ -22,4 +22,12 @@ export abstract class AbstractSubstring {
   getIsFound(): boolean {
     return this.isFound;
   }
+
+  reset(): void {
+    this.startProcessingTime = 0;
+    this.endProcessingTime = 0;
+    this.startPreProcessingTime = 0;
+    this.endPreProcessingTime = 0;
+    this.isFound = false;
+  }
 }
